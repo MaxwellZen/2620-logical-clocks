@@ -22,24 +22,24 @@ We started "coding" in a Google Doc: the contents of the Google Doc can be viewe
     - Initialize cycles_per_sec (1 to 6), log_clock (0)
     - Open log_{id}.txt file
     - Repeat 60 * cycles_per_sec times:
-    - Query “size” -> queue_len
-    - If there’s a message:
-        - Query “pop”
-        - log_clock = max(log_clock, msg) + 1
-        - Write to log: “receive {global time} {queue_len} {log_clock}”
-    - Else:
-        - op = roll random num
-        - If 1 <= op <= 3: deal with sends
-            - log_clock += 1
-            - If op & 1: (bitwise and)
-            - Query: “send {(id+1)%3} {log_clock}”
-            - If op & 2:
-            - Query: “send {(id+2}%3} {log_clock}”
-            - Write to log: “send {op} {global time} {log_clock}
-        - Else: 
-            - log_clock += 1
-            - Write to log: “internal {global time} {log_clock}
-    - Sleep for 1 / cycles_per_sec seconds
+        - Query “size” -> queue_len
+        - If there’s a message:
+            - Query “pop”
+            - log_clock = max(log_clock, msg) + 1
+            - Write to log: “receive {global time} {queue_len} {log_clock}”
+        - Else:
+            - op = roll random num
+            - If 1 <= op <= 3: deal with sends
+                - log_clock += 1
+                - If op & 1: (bitwise and)
+                    - Query: “send {(id+1)%3} {log_clock}”
+                - If op & 2:
+                    - Query: “send {(id+2}%3} {log_clock}”
+                - Write to log: “send {op} {global time} {log_clock}
+            - Else: 
+                - log_clock += 1
+                - Write to log: “internal {global time} {log_clock}
+        - Sleep for 1 / cycles_per_sec seconds
 - Testing protocol:
     - python3 server.py
     - python3 client.py 0 normal1 & python3 client.py 1 normal1 & python3 client.py 2 normal1
