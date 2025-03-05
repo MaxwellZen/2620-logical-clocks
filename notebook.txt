@@ -1,0 +1,27 @@
+3/4
+___
+
+Note: Most of the important stuff is in README.md, to the point that we were
+considering just having that be our engineering notebook, but we'll include this 
+notebook entry just for completeness.
+
+For this project, we implemented a system based on logical clocks to facilitate 
+message passing between distributed machines. The core components of our system 
+were client.py and server.py, with the server handling a call-and-response protocol 
+to manage message queues. Each client could log in, send messages, check the queue 
+size, and retrieve messages. Our goal was to accurately model logical clock 
+synchronization while managing communication between multiple machines.
+
+Early on, we structured our approach in a shared Google Doc to outline the fundamental 
+design. This helped us visualize interactions before coding. We chose a centralized 
+server model to simplify queue management and implemented a message queue for each 
+machine with basic operations for sending and retrieving messages.
+
+Visualizing our results was pretty interesting. We plotted system time against the logical 
+clock progression for each machine, helping us see how well each machine was keeping up with 
+messages being sent. I thought it was pretty cool that our graphs gave us a god's eye view 
+and helped us easily see whether processes were lagging behind and by how much. This project 
+was a good introduction to synchronization across machines with different clock speeds, and 
+the effects of things like clock speed and message frequency on the effectiveness of that 
+synchronization.
+
