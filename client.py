@@ -15,8 +15,8 @@ if len(sys.argv) < 3 or not sys.argv[1].isdigit():
     sys.exit(0)
 
 id = int(sys.argv[1])
-logname = sys.argv[2] + "_" + str(id) + ".txt"
-dataname = sys.argv[2] + "_" + str(id) + "_data.txt"
+logname = "logs/" + sys.argv[2] + "_" + str(id) + ".txt"
+dataname = "data/" + sys.argv[2] + "_" + str(id) + "_data.txt"
 logfile = open(logname, "w")
 datafile = open(dataname, "w")
 
@@ -51,11 +51,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         if queue_len > 0:
             s.sendall("pop".encode("utf-8"))
             msg = s.recv(1024).decode('utf-8')
-            print(f"id: {id}, msg: {msg}")
+            # print(f"id: {id}, msg: {msg}")
             log_clock = max(log_clock, int(msg)) + 1
             logfile.write(f"receive {sys_time()} {queue_len} {log_clock}\n")
         else:
-            op = random.randint(1,10)
+            op = random.randint(1,5)
             if op <= 3:
                 log_clock += 1
                 if op & 1:
