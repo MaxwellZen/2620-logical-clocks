@@ -63,7 +63,7 @@ First, we discuss our general findings, and then we dive into specific examples 
 Our findings:
 - When cycles per second are closer to each other, the three machines are easily able to keep up with their queues, demonstrated by generally matching logical clocks and average queue sizes below 1.
 - When cycles per second are far apart, the slowest machine has a lagging logical clock time and a high average queue size, indicating that it is inable to keep up with its queue and therefore is stuck processing events that happened far in the past.
-- When the probability of an internal event decreased (from 70% to 40%), more messages are sent and the system is less forgiving of variance in clock speeds. In the original setup, a 3x difference in clock speeds can be tolerated, but if the probability of an internal event is lowered that difference
+- When the probability of an internal event decreased (from 70% to 40%), more messages are sent and the system is less forgiving of variance in clock speeds. In the original setup, a 3x difference in clock speeds can be tolerated, but if the probability of an internal event is lowered that difference in clock speed is enough to cause the slower machine to fall behind on message processing.
 
 ### Normal Settings, Trial 1
 
