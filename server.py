@@ -9,6 +9,7 @@ sel = selectors.DefaultSelector()
 queues = [[] for i in range(3)]
 ptrs = [0] * 3
 
+# implements call-and-response protocol: refer to README for details
 def handle_command(request, data):
     """
     Handles incoming commands from the client.
